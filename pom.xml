@@ -7,14 +7,14 @@
 	<name>riskengine</name>
 	<description>example risk engine</description>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.7.0</version>
 				<configuration>
-					<source />
-					<target />
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -58,66 +58,9 @@
 		</dependency>
 		<dependency>
 			<groupId>com.tere.queryengine</groupId>
-			<artifactId>com.tere.queryengine.client.jdbc</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.tere.queryengine</groupId>
-			<artifactId>com.tere.queryengine.graph</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.tere.queryengine</groupId>
 			<artifactId>com.tere.queryengine.datasources.file</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<optional>false</optional>
 		</dependency>
-		<dependency>
-			<groupId>com.tere.queryengine</groupId>
-			<artifactId>com.tere.queryengine.datasources.jdbc</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<optional>false</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.tere.web</groupId>
-			<artifactId>com.tere.web.application</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.tere.tools</groupId>
-			<artifactId>com.tere.tools.common</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jglue.fluent-json</groupId>
-			<artifactId>fluent-json</artifactId>
-			<version>2.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.tere.queryengine</groupId>
-			<artifactId>com.tere.queryengine.server</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<version>1.7</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jgrapht</groupId>
-			<artifactId>jgrapht-ext</artifactId>
-			<version>1.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jgraph</groupId>
-			<artifactId>jgraph</artifactId>
-			<version>5.13.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.jayway.jsonpath</groupId>
-			<artifactId>json-path</artifactId>
-			<version>2.0.0</version>
-		</dependency>
-
 	</dependencies>
 </project>
