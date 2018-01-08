@@ -78,24 +78,13 @@ public class Instrument implements Comparable, Serializable
 		return securitised;
 	}
 
+
+	@Override
 	public String toString()
 	{
-		StringBuffer buf = new StringBuffer();
-		buf.append("instrumentId");
-		buf.append("='");
-		buf.append(instrumentId);
-		buf.append("'");
-
-		buf.append("instrumentName");
-		buf.append("='");
-		buf.append(instrumentName);
-		buf.append("'");
-
-		buf.append("securitised");
-		buf.append("='");
-		buf.append(securitised);
-		buf.append("'");
-		return buf.toString();
+		return "{\"instrumentId\":\"" + instrumentId + "\", \"instrumentName\":\""
+				+ instrumentName + "\", \"securitised\":\"" + securitised
+				+ "\", \"externalReferences\":" + externalReferences + " ";
 	}
 
 	@Override

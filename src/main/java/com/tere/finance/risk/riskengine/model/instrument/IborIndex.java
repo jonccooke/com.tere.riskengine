@@ -101,4 +101,19 @@ public class IborIndex extends Index
 		return fixingZone;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "{ \"currency\":\"" + currency + "\", \"active\":\"" + active
+				+ "\", \"dayCount\":\"" + dayCount + "\", \"fixingCalendar\":"
+				+ fixingCalendar + ", \"offsetDays\":\"" + offsetDays
+				+ "\", \"offsetCalendar\":" + offsetCalendar
+				+ ", \"effectiveDateCalendar\":" + effectiveDateCalendar
+				+ ", \"tenor\":\"" + tenor + "\", \"tenorConvention\":\"" + tenorConvention
+				+ "\", \"fixingTime\":\"" + fixingTime + "\", \"fixingZone\":\"" + fixingZone
+				+ "\", \"instrumentId\":\"" + instrumentId + "\", \"instrumentName\":\""
+				+ instrumentName + "\", \"securitised\":\"" + securitised
+				+ "\", \"externalReferences\":" + externalReferences + "}";
+	}
+
 }

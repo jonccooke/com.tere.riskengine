@@ -135,5 +135,17 @@ public class Curve
 		return curveName;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "{ \"effectiveDate\"=\"" + effectiveDate + "\", \"currency\"=\""
+				+ currency + "\", \"badDayConvention\"=\"" + badDayConvention
+				+ "\", \"dayConvention\"=\"" + dayConvention + "\", \"calendar\"=\"" + calendar
+				+ "\", \"snaptime\"=\"" + snaptime + "\", \"spotdate\"=\"" + spotdate
+				+ "\", \"firstDate\"=\"" + firstDate + "\", \"lastDate\"=\"" + lastDate
+				+ "\", \"curveName\"=\"" + curveName + "\", \"curvePoints=[" + curvePoints
+				+ "]" + "}";
+	}
+
 
 }

@@ -50,6 +50,13 @@ public  class Country implements Serializable, Comparable
 	{
 		return 0;
 	}
+	@Override
+	public String toString()
+	{
+		return "{ \"countryId\":\"" + countryId + "\", \"countryName\":\""
+				+ countryName + "\", \"alpha2\":\"" + alpha2 + "\", \"alpha3\":\"" + alpha3
+				+ "\", \"iSONumber\":\"" + iSONumber + "\"}";
+	}
 	
 	
 //	

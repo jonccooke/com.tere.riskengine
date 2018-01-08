@@ -1,6 +1,8 @@
 package com.tere.finance.risk.riskengine.valuation.fixedincome;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.joda.time.LocalDate;
 
@@ -30,22 +32,24 @@ public class InterestRateSwapPricingEngine extends
 	@Override
 	public double calculate(ValueType valueType, Date valuationDate) throws ValuationException
 	{
-		calculateCashFlows(valuationDate);
+		List<CashFlow> fixedLeg = new ArrayList<CashFlow>();
+		List<CashFlow> floatingLeg = new ArrayList<CashFlow>();
+		calculateCashFlows(valuationDate,fixedLeg,floatingLeg);
 		
 		double pv = 0.0d;
 		
-		for (CashFlow cashFlow : getInstrument().getFixedLeg())
+		for (CashFlow cashFlow : fixedLeg)
 		{
 			pv+=cashFlow.getValue();
 		}
-		for (CashFlow cashFlow : getInstrument().getFloatingLeg())
+		for (CashFlow cashFlow : floatingLeg)
 		{
 			pv-=cashFlow.getValue();
 		}
 		return pv;
 	}
 
-	protected void calculateCashFlows(Date valuationDate) throws ValuationException
+	protected void calculateCashFlows(Date valuationDate, List<CashFlow> fixedLeg, List<CashFlow> floatingLeg) throws ValuationException
 	{
 		int term = getInstrument().getMaturityDate().getYear()
 				- (LocalDate.fromDateFields(valuationDate).getYear());
@@ -65,8 +69,6 @@ public class InterestRateSwapPricingEngine extends
 		
 		// Cash Flow/[(1+YTM/Coupon Frequency)^Period]
 		int paymentLoop = 0;
-		getInstrument().getFixedLeg().clear();
-		getInstrument().getFloatingLeg().clear();
 
 		currentDate = LocalDate.now();
 		double discountFactor;
@@ -83,7 +85,7 @@ public class InterestRateSwapPricingEngine extends
 			couponPayment = notional * (fixedRate / frequency.getMultipler()) * discountFactor * accrualValue; // missing accrual factor
 			
 			cashFlow = new CashFlow(couponPayment, currentDate);
-			getInstrument().getFixedLeg().add(cashFlow);
+			fixedLeg.add(cashFlow);
 
 			currentDate = currentDate.plusDays((int) frequencyMultipler);
 
@@ -101,7 +103,7 @@ public class InterestRateSwapPricingEngine extends
 			couponPayment = notional * ((floatingRate + floatingSpread) / frequency.getMultipler()) * discountFactor * accrualValue; // missing accrual factor
 			
 			cashFlow = new CashFlow(couponPayment, currentDate);
-			getInstrument().getFloatingLeg().add(cashFlow);
+			floatingLeg.add(cashFlow);
 
 			currentDate = currentDate.plusDays((int) frequencyMultipler);
 

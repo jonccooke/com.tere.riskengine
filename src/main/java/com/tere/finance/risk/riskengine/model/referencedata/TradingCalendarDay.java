@@ -1,7 +1,5 @@
 package com.tere.finance.risk.riskengine.model.referencedata;
 
-import java.util.Date;
-
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
@@ -80,6 +78,16 @@ public class TradingCalendarDay
 	public LocalTime getPostMarketClose()
 	{
 		return postMarketClose;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "{ \"date\"=\"" + date + "\", \"status\"=" + status
+				+ "\", \"preMarketOpen\"=" + preMarketOpen + "\", \"preMarketClose\"="
+				+ preMarketClose + "\", \"marketOpen\"=" + marketOpen
+				+ "\", \"marketClose\"=" + marketClose + "\", \"postMarketOpen\"=\""
+				+ postMarketOpen + ", \"postMarketClose\"=\"" + postMarketClose + "\"}";
 	}
 
 }

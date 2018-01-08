@@ -62,4 +62,11 @@ public class HolidayCalendar
 		return currentDate;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "{ \"days\":\"" + days + "\", \"country\":" + country
+				+ ", \"holidayCalendarId\":\"" + holidayCalendarId + "\"}";
+	}
+
 }
