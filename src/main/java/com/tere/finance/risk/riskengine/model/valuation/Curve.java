@@ -138,13 +138,31 @@ public class Curve
 	@Override
 	public String toString()
 	{
-		return "{ \"effectiveDate\"=\"" + effectiveDate + "\", \"currency\"=\""
-				+ currency + "\", \"badDayConvention\"=\"" + badDayConvention
-				+ "\", \"dayConvention\"=\"" + dayConvention + "\", \"calendar\"=\"" + calendar
-				+ "\", \"snaptime\"=\"" + snaptime + "\", \"spotdate\"=\"" + spotdate
-				+ "\", \"firstDate\"=\"" + firstDate + "\", \"lastDate\"=\"" + lastDate
-				+ "\", \"curveName\"=\"" + curveName + "\", \"curvePoints=[" + curvePoints
-				+ "]" + "}";
+		String outPut =  "{ \"effectiveDate\":\"" + effectiveDate + "\", \"currency\":\""
+				+ currency + "\", \"badDayConvention\":\"" + badDayConvention
+				+ "\", \"dayConvention\":\"" + dayConvention + "\", \"calendar\":" + calendar
+				+ ", \"snaptime\":\"" + snaptime + "\", \"spotdate\":\"" + spotdate
+				+ "\", \"firstDate\":\"" + firstDate + "\", \"lastDate\":\"" + lastDate
+				+ "\", \"curveName\":\"" + curveName + "\", \"curvePoints\":[";
+		
+		boolean first = true;
+		
+		for (CurvePoint curvePoint : curvePoints.values())
+		{
+			if (!first)
+			{
+				outPut+= ", ";
+			}
+			else
+			{
+				first = false;
+			}
+			outPut += curvePoint.toString();
+		}
+		
+		outPut+= "]}";
+			
+		return outPut;
 	}
 
 

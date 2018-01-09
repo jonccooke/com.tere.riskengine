@@ -1,14 +1,15 @@
 package com.tere.finance.risk.riskengine.model.referencedata;
 
+import java.util.Collection;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 
 public class HolidayCalendar
 {
-	private Map<LocalDate, TradingCalendarDay> days = new ConcurrentHashMap<LocalDate, TradingCalendarDay>();
+	private Map<LocalDate, TradingCalendarDay> days = new ConcurrentSkipListMap<LocalDate, TradingCalendarDay>();
 	private Country country;
 	private String holidayCalendarId;
 	
@@ -32,7 +33,12 @@ public class HolidayCalendar
 	{
 		days.put(date, new TradingCalendarDay(date, status));
 	}
-	
+
+	public void setTradingDay(LocalDate date, TradingCalendarDay tradingCalendarDay)
+	{
+		days.put(date, tradingCalendarDay);
+	}
+
 	public boolean isTradingDay(LocalDate date)
 	{
 		if (days.containsKey(date))
@@ -62,10 +68,14 @@ public class HolidayCalendar
 		return currentDate;
 	}
 
+	public Collection<TradingCalendarDay> getTradingDays()
+	{
+		return days.values();
+	}
 	@Override
 	public String toString()
 	{
-		return "{ \"days\":\"" + days + "\", \"country\":" + country
+		return "{ \"days\":" + days + ", \"country\":" + country
 				+ ", \"holidayCalendarId\":\"" + holidayCalendarId + "\"}";
 	}
 

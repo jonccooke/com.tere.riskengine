@@ -61,8 +61,8 @@ public class CurvePoint
 	@Override
 	public String toString()
 	{
-		return "CurvePoint [tenor=" + tenor + ", date=" + date + ", point="
-				+ point + "]";
+		return "{\"tenor\":\"" + tenor + "\", \"date\":\"" + date + "\", \"point\":\""
+				+ point + "\"}";
 	}
 
 }
